@@ -1,13 +1,21 @@
-import {
-	PageHome,
-} from 'pages';
+import { PageHome } from "pages";
+import { PageContacts } from "pages/contacts";
 
 const routes = {
-	'home': {
-		path: '/',
+	home: {
+		path: "/",
 		page: PageHome,
-		name: 'Home',
-		link () {
+		name: "Home",
+		link() {
+			return this.path;
+		},
+		exact: true,
+	},
+	contacts: {
+		path: "/contacts",
+		page: PageContacts,
+		name: "Contacts",
+		link() {
 			return this.path;
 		},
 		exact: true,
