@@ -9,7 +9,7 @@ const View = ({ contacts }) => {
 	return (
 		<List
 			grid={{
-				gutter: 16,
+				gutter: [24, 16],
 				BREAKPOINTS,
 			}}
 			dataSource={contacts}
@@ -17,23 +17,21 @@ const View = ({ contacts }) => {
 				const fullName = `${contact.name.first} ${contact.name.last}`;
 				return (
 					<List.Item>
-						<div className="card">
-							<Card
-								hoverable
-								style={{ width: "240px" }}
-								cover={
-									<img
-										alt={fullName}
-										src={contact.picture.large}
-									/>
-								}
-							>
-								<Meta
-									title={fullName}
-									description={contact.email}
+						<Card
+							hoverable
+							style={{ width: "280px" }}
+							cover={
+								<img
+									alt={fullName}
+									src={contact.picture.large}
 								/>
-							</Card>
-						</div>
+							}
+						>
+							<Meta
+								title={fullName}
+								description={contact.email}
+							/>
+						</Card>
 					</List.Item>
 				);
 			}}

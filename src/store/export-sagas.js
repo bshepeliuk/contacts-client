@@ -1,3 +1,8 @@
-import { fetchContactsWatcher } from "./contacts/sagas";
+import {
+	fetchContactsWatcher,
+	filterWatcher,
+	sorterWatcher,
+	searchWatcher,
+} from "./contacts/sagas";
 
-export { fetchContactsWatcher };
+export { fetchContactsWatcher, filterWatcher, sorterWatcher, searchWatcher };

@@ -5,7 +5,22 @@ import { CardListView } from "components/contacts/cards";
 import { TableView } from "components/contacts/table";
 import useToggleContactMode from "hooks/contacts/useToggleContactMode";
 
-const ContactsView = ({ fetchContacts }) => {
+function SearchView({ liveSearch }) {
+	const inputRef = React.useRef("");
+	const handleChange = () => liveSearch({ name: inputRef.current.value });
+
+	return (
+		<input
+			ref={inputRef}
+			type="text"
+			placeholder="search by name"
+			defaultValue=""
+			onChange={handleChange}
+		/>
+	);
+}
+
+const ContactsView = ({ fetchContacts, liveSearch, filters }) => {
 	const { onToggleMode, isTableMode } = useToggleContactMode();
 
 	React.useEffect(() => {
@@ -22,6 +37,8 @@ const ContactsView = ({ fetchContacts }) => {
 						<TableOutlined />
 					)}
 				</button>
+				<button onClick={fetchContacts}>refresh</button>
+				<SearchView liveSearch={liveSearch} filters={filters} />
 			</div>
 
 			{isTableMode ? <TableView /> : <CardListView />}
