@@ -10,10 +10,10 @@ export const initialState = {
 		gender: null,
 		nat: null,
 		name: "",
+		creator: "",
 	},
 	sorter: {
 		sortField: null,
-		sortOrder: null,
 	},
 };
 
@@ -50,18 +50,16 @@ export const reducer = createReducer(initialState, {
 			},
 		};
 	},
-	[contacts.sorterSuccess](state, { payload: { sortField, sortOrder } }) {
+	[contacts.sorterSuccess](state, { payload: { sortField } }) {
 		return {
 			...state,
 			sorter: {
 				...state.sorter,
 				sortField,
-				sortOrder,
 			},
 		};
 	},
 	[contacts.searchSuccess](state, { payload }) {
-		console.log("search", payload);
 		return {
 			...state,
 			filters: {

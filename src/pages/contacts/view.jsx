@@ -1,26 +1,16 @@
 import React from "react";
-import { TableOutlined, UnorderedListOutlined } from "@ant-design/icons";
+import { Button } from "antd";
 
 import { CardListView } from "components/contacts/cards";
 import { TableView } from "components/contacts/table";
 import useToggleContactMode from "hooks/contacts/useToggleContactMode";
+import NationalityFilterView from "./components/NationalityFilterView";
+import GenderFilterView from "./components/GenderFilterView";
+import SearchView from "./components/SearchView";
+import SortByNameBtn from "./components/SortByNameBtn";
+import ContactListModeBtn from "./components/ContactListModeBtn";
 
-function SearchView({ liveSearch }) {
-	const inputRef = React.useRef("");
-	const handleChange = () => liveSearch({ name: inputRef.current.value });
-
-	return (
-		<input
-			ref={inputRef}
-			type="text"
-			placeholder="search by name"
-			defaultValue=""
-			onChange={handleChange}
-		/>
-	);
-}
-
-const ContactsView = ({ fetchContacts, liveSearch, filters }) => {
+const ContactsView = ({ fetchContacts, onLiveSearch, onFilter, onSort }) => {
 	const { onToggleMode, isTableMode } = useToggleContactMode();
 
 	React.useEffect(() => {
@@ -30,15 +20,18 @@ const ContactsView = ({ fetchContacts, liveSearch, filters }) => {
 	return (
 		<>
 			<div>
-				<button onClick={onToggleMode}>
-					{isTableMode ? (
-						<UnorderedListOutlined />
-					) : (
-						<TableOutlined />
-					)}
-				</button>
-				<button onClick={fetchContacts}>refresh</button>
-				<SearchView liveSearch={liveSearch} filters={filters} />
+				<Button type="primary" onClick={fetchContacts}>
+					Reload
+				</Button>
+				<SortByNameBtn onSort={onSort} />
+				<ContactListModeBtn
+					onToggleMode={onToggleMode}
+					isTableMode={isTableMode}
+				/>
+
+				<SearchView onLiveSearch={onLiveSearch} />
+				<GenderFilterView onFilter={onFilter} />
+				<NationalityFilterView onFilter={onFilter} />
 			</div>
 
 			{isTableMode ? <TableView /> : <CardListView />}

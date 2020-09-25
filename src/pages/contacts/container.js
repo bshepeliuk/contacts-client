@@ -14,7 +14,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
 	fetchContacts: contactActions.fetchContactsStart,
-	liveSearch: contactActions.searchStart,
+	onLiveSearch: contactActions.searchStart,
+	onFilter: contactActions.filterStart,
+	onSort: contactActions.sorterStart,
 };
 
 const PageContacts = compose(connect(mapStateToProps, mapDispatchToProps))(
