@@ -1,4 +1,5 @@
 import { put, call, takeLatest, debounce } from "redux-saga/effects";
+import { notification } from "antd";
 
 import contactActions, { OActionTypes } from "store/contacts/actions";
 import Api from "../../api";
@@ -11,6 +12,14 @@ function* fetchContacts() {
 			contactActions.fetchContactsSuccess({ contacts: res.data.results })
 		);
 	} catch (error) {
+		notification.error({
+			placement: "bottomRight",
+			bottom: 50,
+			duration: 3,
+			rtl: true,
+			description: "Please try again later.",
+			message: "Error!!!",
+		});
 		yield put(
 			contactActions.fetchContactsError({ message: error.message })
 		);

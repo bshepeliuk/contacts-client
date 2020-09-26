@@ -2,6 +2,14 @@
 	padding: 10px 0;
 }
 
-.ant-row {
-	justify-content: center !important;
+.wrap {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-evenly;
+}
+
+.pagination {
+	margin-top: 50px;
+	display: flex;
+	justify-content: flex-end;
 }

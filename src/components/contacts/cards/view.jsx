@@ -1,23 +1,34 @@
 import "./style.scss";
 import React from "react";
-import { Card, List } from "antd";
-import { BREAKPOINTS } from "constants/breakpoints";
+import { Card, Pagination } from "antd";
 
 const { Meta } = Card;
 
 const View = ({ contacts }) => {
+	const [defaultPage, setDefaultPage] = React.useState(1);
+	const [pageSize, setPageSize] = React.useState(10);
+	const [values, setValues] = React.useState({ min: 0, max: pageSize });
+
+	const handleChange = (page, _pageSize) => {
+		if (pageSize > _pageSize) {
+			setDefaultPage(1);
+			setPageSize(_pageSize);
+		}
+
+		setValues({
+			min: (page - 1) * _pageSize,
+			max: page * _pageSize,
+		});
+	};
+
 	return (
-		<List
-			grid={{
-				gutter: [24, 16],
-				BREAKPOINTS,
-			}}
-			dataSource={contacts}
-			renderItem={(contact) => {
-				const fullName = `${contact.name.first} ${contact.name.last}`;
-				return (
-					<List.Item>
+		<>
+			<div className="wrap">
+				{contacts?.slice(values.min, values.max).map((contact) => {
+					const fullName = `${contact.name.first} ${contact.name.last}`;
+					return (
 						<Card
+							key={contact.phone}
 							hoverable
 							style={{ width: "280px" }}
 							cover={
@@ -32,10 +43,19 @@ const View = ({ contacts }) => {
 								description={contact.email}
 							/>
 						</Card>
-					</List.Item>
-				);
-			}}
-		/>
+					);
+				})}
+			</div>
+
+			<div className="pagination">
+				<Pagination
+					defaultCurrent={defaultPage}
+					total={contacts.length}
+					defaultPageSize={pageSize}
+					onChange={handleChange}
+				/>
+			</div>
+		</>
 	);
 };
 

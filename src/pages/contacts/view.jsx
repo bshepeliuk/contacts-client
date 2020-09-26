@@ -9,6 +9,8 @@ import GenderFilterView from "./components/GenderFilterView";
 import SearchView from "./components/SearchView";
 import SortByNameBtn from "./components/SortByNameBtn";
 import ContactListModeBtn from "./components/ContactListModeBtn";
+import { StatisticsView } from "components/contacts/statistics";
+import "./style.scss";
 
 const ContactsView = ({ fetchContacts, onLiveSearch, onFilter, onSort }) => {
 	const { onToggleMode, isTableMode } = useToggleContactMode();
@@ -19,22 +21,28 @@ const ContactsView = ({ fetchContacts, onLiveSearch, onFilter, onSort }) => {
 
 	return (
 		<>
-			<div>
+			<div className="page-wrap">
 				<Button type="primary" onClick={fetchContacts}>
 					Reload
 				</Button>
-				<SortByNameBtn onSort={onSort} />
 				<ContactListModeBtn
 					onToggleMode={onToggleMode}
 					isTableMode={isTableMode}
 				/>
-
-				<SearchView onLiveSearch={onLiveSearch} />
-				<GenderFilterView onFilter={onFilter} />
-				<NationalityFilterView onFilter={onFilter} />
+				<div className="sort-wrap">
+					<SortByNameBtn onSort={onSort} />
+				</div>
+				<div className="filter-wrap">
+					<SearchView onLiveSearch={onLiveSearch} />
+					<GenderFilterView onFilter={onFilter} />
+					<NationalityFilterView onFilter={onFilter} />
+				</div>
 			</div>
+			<div>{isTableMode ? <TableView /> : <CardListView />}</div>
 
-			{isTableMode ? <TableView /> : <CardListView />}
+			<div className="statistics-wrap">
+				<StatisticsView />
+			</div>
 		</>
 	);
 };
