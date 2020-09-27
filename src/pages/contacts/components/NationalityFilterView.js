@@ -46,7 +46,7 @@ function NationalityFilterView({ onFilter }) {
 			placeholder="Filter by nationality"
 			value={selected}
 			onChange={handleChange}
-			style={{ width: "300px" }}
+			style={{ width: 300, marginBottom: 5 }}
 		>
 			{filteredOptions.map((item) => (
 				<Option key={item.value} value={item.value}>

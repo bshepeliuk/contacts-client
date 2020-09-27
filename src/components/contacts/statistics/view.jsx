@@ -26,7 +26,7 @@ const View = ({ male, female, other, contacts, nat }) => {
 					<Statistic title="Other" value={other.length} />
 				</Col>
 				<Col span={4}>
-					<Card>
+					<Card style={{ width: 150 }}>
 						<Statistic
 							title={maleOrFemale}
 							value={count}
@@ -36,16 +36,16 @@ const View = ({ male, female, other, contacts, nat }) => {
 					</Card>
 				</Col>
 			</Row>
-
-			<Row gutter={[16, 16]}>
+			<div className="stats-nat">
 				{nat.map(([nat, count]) => (
-					<Col span={1} key={`${nat}:${count}`}>
-						<div className="stats-nat">
-							<Statistic title={nat} value={count} />
-						</div>
-					</Col>
+					<Statistic
+						key={`${nat}:${count}`}
+						valueStyle={{ marginRight: 15 }}
+						title={nat}
+						value={count}
+					/>
 				))}
-			</Row>
+			</div>
 		</>
 	);
 };

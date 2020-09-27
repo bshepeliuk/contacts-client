@@ -23,7 +23,7 @@ function SearchView({ onLiveSearch }) {
 			<Input
 				allowClear
 				name={NAME_FIELD}
-				style={{ width: 200 }}
+				style={{ width: 200, marginBottom: 5 }}
 				ref={inputNameRef}
 				type="text"
 				placeholder="search by name"
@@ -33,7 +33,7 @@ function SearchView({ onLiveSearch }) {
 			<Input
 				allowClear
 				name={CREATOR_FIELD}
-				style={{ width: 200 }}
+				style={{ width: 200, marginBottom: 5 }}
 				ref={inputCreatorRef}
 				type="text"
 				placeholder="search by creator"

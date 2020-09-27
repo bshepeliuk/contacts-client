@@ -21,7 +21,7 @@ function GenderFilterView({ onFilter }) {
 		<Select
 			allowClear
 			showSearch
-			style={{ width: 200 }}
+			style={{ width: 200, marginBottom: 5 }}
 			placeholder="Filter by gender"
 			optionFilterProp="children"
 			onChange={onChange}
