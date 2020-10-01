@@ -25,7 +25,7 @@ function sortName(items) {
 		order = ASC;
 	}
 
-	return [...sortedArr];
+	return sortedArr;
 }
 
 export default sortName;

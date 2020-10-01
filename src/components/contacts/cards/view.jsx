@@ -30,7 +30,11 @@ const View = ({ contacts }) => {
 						<Card
 							key={contact.phone}
 							hoverable
-							style={{ width: "280px" }}
+							style={{
+								width: 280,
+								marginBottom: 10,
+								marginRight: 15,
+							}}
 							cover={
 								<img
 									alt={fullName}

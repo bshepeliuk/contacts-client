@@ -1,51 +1,49 @@
-import "./style.scss";
 import React from "react";
 import { Row, Col, Statistic, Card } from "antd";
-import { ArrowUpOutlined } from "@ant-design/icons";
 
-const View = ({ male, female, other, contacts, nat }) => {
-	const isMale = male.length > female.length;
-	const maleOrFemale = isMale ? "Male" : "Female";
-	const count = isMale
-		? male.length - female.length
-		: female.length - male.length;
+import "./style.scss";
+import { ArrowUpOutlined } from "@ant-design/icons";
+import useContactStats from "hooks/contacts/useContactStats";
+import NationalitiesStatsList from "./components/NationalitiesStatsList";
+
+const View = ({ contacts }) => {
+	const {
+		numberOfContacts,
+		numberOfOthers,
+		numberOfFemale,
+		numberOfMale,
+		whichGender,
+		genderCount,
+		nationalities,
+	} = useContactStats(contacts);
 
 	return (
 		<>
 			<Row gutter={16}>
 				<Col span={4}>
-					<Statistic title="All contacts" value={contacts.length} />
+					<Statistic title="All contacts" value={numberOfContacts} />
 				</Col>
 				<Col span={4}>
-					<Statistic title="Male" value={male.length} />
+					<Statistic title="Male" value={numberOfMale} />
 				</Col>
 				<Col span={4}>
-					<Statistic title="Female" value={female.length} />
+					<Statistic title="Female" value={numberOfFemale} />
 				</Col>
 				<Col span={4}>
-					<Statistic title="Other" value={other.length} />
+					<Statistic title="Other" value={numberOfOthers} />
 				</Col>
 				<Col span={4}>
 					<Card style={{ width: 150 }}>
 						<Statistic
-							title={maleOrFemale}
-							value={count}
+							title={whichGender}
+							value={genderCount}
 							valueStyle={{ color: "#3f8600" }}
 							prefix={<ArrowUpOutlined />}
 						/>
 					</Card>
 				</Col>
 			</Row>
-			<div className="stats-nat">
-				{nat.map(([nat, count]) => (
-					<Statistic
-						key={`${nat}:${count}`}
-						valueStyle={{ marginRight: 15 }}
-						title={nat}
-						value={count}
-					/>
-				))}
-			</div>
+			<NationalitiesStatsList nationalities={nationalities} />
 		</>
 	);
 };

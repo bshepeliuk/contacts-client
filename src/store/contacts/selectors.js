@@ -43,26 +43,3 @@ export const getContacts = createSelector(
 		return items;
 	}
 );
-
-export const getMale = createSelector([_getContacts], (contacts) => {
-	return contacts.items.filter((contact) => contact.gender === "male");
-});
-export const getFemale = createSelector([_getContacts], (contacts) => {
-	return contacts.items.filter((contact) => contact.gender === "female");
-});
-export const getOther = createSelector([_getContacts], (contacts) => {
-	return contacts.items.filter(
-		(contact) => contact.gender !== "female" && contact.gender !== "male"
-	);
-});
-export const getNat = createSelector([_getContacts], (contacts) => {
-	const nat = contacts.items.reduce(
-		(acc, value) => ({
-			...acc,
-			[value.nat]: (acc[value.nat] || 0) + 1,
-		}),
-		{}
-	);
-
-	return Object.entries(nat);
-});

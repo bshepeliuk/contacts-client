@@ -14,7 +14,13 @@ const columns = [
 		title: "Phone",
 		dataIndex: "phone",
 		width: 200,
-		render: (phone) => <Paragraph copyable>{phone}</Paragraph>,
+		render: (phone) => (
+			<Paragraph copyable>
+				<a href={`phone:${phone}`} target="_blank">
+					{phone}
+				</a>
+			</Paragraph>
+		),
 	},
 	{
 		title: "Nationality",
@@ -45,7 +51,13 @@ const columns = [
 		title: "Email",
 		dataIndex: "email",
 		width: 300,
-		render: (email) => <Paragraph copyable>{email}</Paragraph>,
+		render: (email) => (
+			<Paragraph copyable>
+				<a href={`mailto:${email}`} target="_blank">
+					{email}
+				</a>
+			</Paragraph>
+		),
 	},
 	{
 		title: "Full Name",

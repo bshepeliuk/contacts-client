@@ -1,21 +1,11 @@
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { View } from "./view";
-import {
-	getContacts,
-	getMale,
-	getFemale,
-	getNat,
-	getOther,
-} from "store/contacts/selectors";
+import { getContacts } from "store/contacts/selectors";
 
 const mapStateToProps = (state) => {
 	return {
 		contacts: getContacts(state),
-		male: getMale(state),
-		female: getFemale(state),
-		other: getOther(state),
-		nat: getNat(state),
 	};
 };
 
