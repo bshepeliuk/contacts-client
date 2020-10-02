@@ -2,15 +2,39 @@
 	padding: 10px 0;
 }
 
-.wrap {
+.contact-list {
+	list-style-type: none;
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: center;
 	max-width: 1200px;
 	margin: 0 auto;
+	padding-left: 0;
+}
 
-	&:nth-child(4n + 4) {
-		margin-right: 0 !important;
+.contact-item {
+	width: 220px;
+	background-color: #fff;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	padding: 10px;
+	border-radius: 4px;
+	box-shadow: 0 4px 14px hsla(0, 0%, 47.5%, 0.0527344);
+
+	img {
+		width: 100%;
+	}
+
+	a,
+	h2,
+	p {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	&:nth-child(5n + 5) {
+		margin-right: 0;
 	}
 }
 

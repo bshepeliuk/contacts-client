@@ -22,3 +22,23 @@ export const NATIONALITIES = {
 	TR: { name: "Turkish", color: "#ffd666" },
 	US: { name: "American" },
 };
+
+export const NATIONALITIES_SELECT_VALUES = [
+	{ value: "AU", text: "AU" },
+	{ value: "BR", text: "BR" },
+	{ value: "CA", text: "CA" },
+	{ value: "CH", text: "CH" },
+	{ value: "DE", text: "DE" },
+	{ value: "DK", text: "DK" },
+	{ value: "ES", text: "ES" },
+	{ value: "FI", text: "FI" },
+	{ value: "FR", text: "FR" },
+	{ value: "GB", text: "GB" },
+	{ value: "IE", text: "IE" },
+	{ value: "IR", text: "IR" },
+	{ value: "NO", text: "NO" },
+	{ value: "NL", text: "NL" },
+	{ value: "NZ", text: "NZ" },
+	{ value: "TR", text: "TR" },
+	{ value: "US", text: "US" },
+];

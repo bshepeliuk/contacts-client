@@ -4,6 +4,7 @@
 	flex-wrap: wrap;
 	list-style-type: none;
 	padding: 0;
+	justify-content: center;
 }
 
 .list-item {
@@ -32,7 +33,77 @@
 	}
 }
 
+.gender-title,
 .nat-title {
 	color: #1abc9c;
 	font-size: 40px;
+}
+
+.gender-wrap {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 30px;
+	align-items: center;
+}
+
+.genders {
+	display: flex;
+	width: 500px;
+	justify-content: space-between;
+}
+
+.all-contacts,
+.gender-more {
+	text-align: center;
+	color: rgb(0, 173, 92);
+
+	h2 {
+		color: rgb(0, 173, 92);
+		margin-bottom: 0;
+	}
+
+	b {
+		color: rgb(0, 173, 92);
+		font-size: 20px;
+	}
+}
+
+.male,
+.female,
+.other {
+	text-align: center;
+	font-size: 20px;
+	background-color: #fff;
+	border-radius: 5px;
+	padding: 10px 30px;
+}
+
+.male {
+	h2 {
+		color: #13c9e9;
+	}
+
+	b {
+		color: #13c9e9;
+	}
+}
+
+.female {
+	h2 {
+		color: #f069e4;
+	}
+
+	b {
+		color: #f069e4;
+	}
+}
+
+.other {
+	h2 {
+		color: rgb(133, 26, 209);
+	}
+
+	b {
+		color: rgb(133, 26, 209);
+	}
 }

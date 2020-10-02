@@ -1,8 +1,9 @@
 import "./style.scss";
 import React from "react";
 import { Card, Pagination } from "antd";
-
-const { Meta } = Card;
+import { getFullName } from "utils/getFullName";
+import EmailLink from "atoms/EmailLink";
+import PhoneLink from "atoms/PhoneLink";
 
 const View = ({ contacts }) => {
 	const [defaultPage, setDefaultPage] = React.useState(1);
@@ -23,33 +24,20 @@ const View = ({ contacts }) => {
 
 	return (
 		<>
-			<div className="wrap">
+			<ul className="contact-list">
 				{contacts?.slice(values.min, values.max).map((contact) => {
-					const fullName = `${contact.name.first} ${contact.name.last}`;
+					const fullName = getFullName(contact);
+
 					return (
-						<Card
-							key={contact.phone}
-							hoverable
-							style={{
-								width: 280,
-								marginBottom: 10,
-								marginRight: 15,
-							}}
-							cover={
-								<img
-									alt={fullName}
-									src={contact.picture.large}
-								/>
-							}
-						>
-							<Meta
-								title={fullName}
-								description={contact.email}
-							/>
-						</Card>
+						<li className="contact-item" key={contact.phone}>
+							<img src={contact.picture.large} alt={fullName} />
+							<h2 title={fullName}>{fullName}</h2>
+							<EmailLink email={contact.email} className="link" />
+							<PhoneLink phone={contact.phone} className="link" />
+						</li>
 					);
 				})}
-			</div>
+			</ul>
 
 			<div className="pagination">
 				<Pagination

@@ -1,5 +1,4 @@
 import React from "react";
-import { Row, Col, Statistic, Card } from "antd";
 
 import "./style.scss";
 import { ArrowUpOutlined } from "@ant-design/icons";
@@ -19,30 +18,37 @@ const View = ({ contacts }) => {
 
 	return (
 		<>
-			<Row gutter={16}>
-				<Col span={4}>
-					<Statistic title="All contacts" value={numberOfContacts} />
-				</Col>
-				<Col span={4}>
-					<Statistic title="Male" value={numberOfMale} />
-				</Col>
-				<Col span={4}>
-					<Statistic title="Female" value={numberOfFemale} />
-				</Col>
-				<Col span={4}>
-					<Statistic title="Other" value={numberOfOthers} />
-				</Col>
-				<Col span={4}>
-					<Card style={{ width: 150 }}>
-						<Statistic
-							title={whichGender}
-							value={genderCount}
-							valueStyle={{ color: "#3f8600" }}
-							prefix={<ArrowUpOutlined />}
-						/>
-					</Card>
-				</Col>
-			</Row>
+			<h1 className="gender-title">Gender</h1>
+			<div className="gender-wrap">
+				<div className="all-contacts">
+					<h2>All</h2>
+					<b>{numberOfContacts}</b>
+				</div>
+
+				<div className="genders">
+					<div className="male">
+						<h2>Male</h2>
+						<b>{numberOfMale}</b>
+					</div>
+
+					<div className="female">
+						<h2>Female</h2>
+						<b>{numberOfFemale}</b>
+					</div>
+
+					<div className="other">
+						<h2>Other</h2>
+						<b>{numberOfOthers}</b>
+					</div>
+				</div>
+
+				<div className="gender-more">
+					<h2>{whichGender}</h2>
+					<ArrowUpOutlined />
+					<b>{genderCount}</b>
+				</div>
+			</div>
+
 			<NationalitiesStatsList nationalities={nationalities} />
 		</>
 	);

@@ -1,8 +1,10 @@
 import "../style.scss";
 import React from "react";
-import { Typography } from "antd";
 
-const { Paragraph } = Typography;
+import PhoneLink from "atoms/PhoneLink";
+import EmailLink from "atoms/EmailLink";
+import getFullDate from "utils/getFullDate";
+import getFullLocation from "utils/getFullLocation";
 
 const columns = [
 	{
@@ -14,13 +16,7 @@ const columns = [
 		title: "Phone",
 		dataIndex: "phone",
 		width: 200,
-		render: (phone) => (
-			<Paragraph copyable>
-				<a href={`phone:${phone}`} target="_blank">
-					{phone}
-				</a>
-			</Paragraph>
-		),
+		render: (phone) => <PhoneLink phone={phone} />,
 	},
 	{
 		title: "Nationality",
@@ -34,12 +30,7 @@ const columns = [
 		title: "Date of birthday",
 		dataIndex: "dob",
 		render: ({ date }) => {
-			const d = new Date(date);
-			const year = d.getFullYear();
-			const month = d.getMonth() + 1;
-			const day = d.getDate();
-			const fullDate = `${month}/${day}/${year}`;
-
+			const fullDate = getFullDate(date);
 			return <div>{fullDate}</div>;
 		},
 	},
@@ -51,13 +42,7 @@ const columns = [
 		title: "Email",
 		dataIndex: "email",
 		width: 300,
-		render: (email) => (
-			<Paragraph copyable>
-				<a href={`mailto:${email}`} target="_blank">
-					{email}
-				</a>
-			</Paragraph>
-		),
+		render: (email) => <EmailLink email={email} />,
 	},
 	{
 		title: "Full Name",
@@ -71,10 +56,8 @@ const columns = [
 	{
 		title: "Location",
 		dataIndex: "location",
-
 		render: (location) => {
-			const fullLocation = `/${location.country}/${location.street.number} ${location.street.name}, ${location.city}, ${location.state} ${location.postcode}`;
-
+			const fullLocation = getFullLocation(location);
 			return <div>{fullLocation}</div>;
 		},
 	},

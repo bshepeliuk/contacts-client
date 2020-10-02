@@ -1,30 +1,11 @@
 import React from "react";
 import { Select } from "antd";
+import { NATIONALITIES_SELECT_VALUES } from "constants/nationalities";
 
 const { Option } = Select;
 
 function NationalityFilterView({ onFilter }) {
 	const [selected, setSelected] = React.useState([]);
-
-	const filter = [
-		{ value: "AU", text: "AU" },
-		{ value: "BR", text: "BR" },
-		{ value: "CA", text: "CA" },
-		{ value: "CH", text: "CH" },
-		{ value: "DE", text: "DE" },
-		{ value: "DK", text: "DK" },
-		{ value: "ES", text: "ES" },
-		{ value: "FI", text: "FI" },
-		{ value: "FR", text: "FR" },
-		{ value: "GB", text: "GB" },
-		{ value: "IE", text: "IE" },
-		{ value: "IR", text: "IR" },
-		{ value: "NO", text: "NO" },
-		{ value: "NL", text: "NL" },
-		{ value: "NZ", text: "NZ" },
-		{ value: "TR", text: "TR" },
-		{ value: "US", text: "US" },
-	];
 
 	const handleChange = (value) => {
 		setSelected(value);
@@ -36,7 +17,9 @@ function NationalityFilterView({ onFilter }) {
 		}
 	};
 
-	const filteredOptions = filter.filter((o) => !selected.includes(o.value));
+	const filteredOptions = NATIONALITIES_SELECT_VALUES.filter(
+		(o) => !selected.includes(o.value)
+	);
 
 	return (
 		<Select

@@ -1,14 +1,10 @@
 import React from "react";
 import { Select } from "antd";
+import { GENDER_SELECT_VALUES } from "constants/gender";
 
 const { Option } = Select;
 
 function GenderFilterView({ onFilter }) {
-	const filter = [
-		{ text: "Male", value: "male" },
-		{ text: "Female", value: "female" },
-	];
-
 	const onChange = (value) => {
 		if (!value) {
 			onFilter({ gender: null });
@@ -26,7 +22,7 @@ function GenderFilterView({ onFilter }) {
 			optionFilterProp="children"
 			onChange={onChange}
 		>
-			{filter.map((item) => (
+			{GENDER_SELECT_VALUES.map((item) => (
 				<Option key={item.value} value={item.value}>
 					{item.text}
 				</Option>
